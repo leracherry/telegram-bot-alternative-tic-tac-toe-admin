@@ -1,0 +1,67 @@
+{
+  "Login": {
+    "Title": "Login",
+    "Button": "Login",
+    "TelegramIdLabel": "Telegram Id",
+    "PasswordLabel": "Password"
+  },
+  "Games": {
+    "FirstPlayer": "First player",
+    "SecondPlayer":"Second player",
+    "GameType": "Game type",
+    "Moves":"Moves",
+    "Status": "Status",
+    "Winner":"Winner",
+    "LogoText": "Games",
+    "Search": "Search",
+    "Title": "Title",
+    "Link": "Link",
+    "Description": "Description",
+    "PubDate": "Pub date",
+    "CreatedAt": "Created at",
+    "Selected": "selected",
+    "EditButton": "Edit",
+    "NewPost": "New post",
+    "CreateNewPost": "Create new post",
+    "Create": "Create",
+    "EditPost": "Edit post",
+    "Save": "Save",
+    "Cancel": "Cancel",
+    "AreYouSureDelBtn": "Are you sure that you want to delete this items ?",
+    "Delete": "Delete",
+    "Page": "Page",
+    "RowsPerPage": "Rows per page"
+  },
+  "Profile": {
+    "Title": "Profile",
+    "NameLabel": "Name",
+    "EmailLabel": "Email",
+    "Name": "name",
+    "Email": "email",
+    "CreatedAt": "created at",
+    "Save": "Save",
+    "ChangePassword": "Change password",
+    "OldPassword": "Old password",
+    "NewPassword": "New password",
+    "RepeatNewPassword": "Repeat new password",
+    "Change": "Change"
+  },
+  "Errors": {
+    "Required": "Required",
+    "InvalidEmail": "Invalid email",
+    "Min6": "Minimum 6 characters required",
+    "Max30": "Maximum 30 characters required",
+    "UserNotFound": "User not found",
+    "IncorrectPassword": "Incorrect password",
+    "IncorrectOldPassword": "Incorrect old password",
+    "UserAlreadyExist": "User already exist",
+    "LinkAlreadyExist": "Like already exist",
+    "NotEnoughRights": "Not enough right",
+    "PasswordsMustMatch": "Passwords must match",
+    "EmailMustBeAValidEmail": "Email must be a valid email"
+  },
+  "Menu": {
+    "Profile": "Profile",
+    "Logout": "Logout"
+  }
+}
