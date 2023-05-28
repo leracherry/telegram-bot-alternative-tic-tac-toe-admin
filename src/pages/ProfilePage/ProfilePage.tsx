@@ -6,6 +6,7 @@ import Spinner from '../../components/Spinner/Spinner';
 import UserProfileComponent from './UserProfileComponent/UserProfileComponent';
 import ChangePassword from './ChangePassword/ChangePassword';
 import styles from './ProfilePage.module.scss';
+import withSidebar from '../../templates/withSidebar';
 
 const ProfilePage: FC = () => {
   const {
@@ -13,8 +14,6 @@ const ProfilePage: FC = () => {
     user,
     loading,
     changePassword,
-    changeProfile,
-    changeProfileErrors,
     changePasswordErrors,
     clearErrors,
   } = UserStore;
@@ -27,12 +26,7 @@ const ProfilePage: FC = () => {
       {loading && <Spinner />}
       {user && (
         <Box className={styles.user}>
-          <UserProfileComponent
-            changeProfileErrors={changeProfileErrors}
-            user={user}
-            clearErrors={clearErrors}
-            changeProfile={changeProfile}
-          />
+          <UserProfileComponent user={user} />
           <ChangePassword
             changePassword={changePassword}
             clearErrors={clearErrors}
@@ -44,4 +38,4 @@ const ProfilePage: FC = () => {
   );
 };
 
-export default observer(ProfilePage);
+export default observer(withSidebar(ProfilePage));

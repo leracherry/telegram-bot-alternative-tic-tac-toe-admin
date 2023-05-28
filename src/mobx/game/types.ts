@@ -6,30 +6,16 @@ export interface IGame {
   moves: IMove[];
   status: string;
   winner: string;
-  createdAt: Date
+  createdAt: Date;
 }
 
 export interface IMove {
-  row: number,
-  col: number,
-  figure: 'X' | '0',
-  innerRow: number,
-  innerCol: number
+  row: number;
+  col: number;
+  figure: 'X' | '0';
+  innerRow: number;
+  innerCol: number;
 }
-
-export interface ICreatePostBody {
-  title: string;
-  link: string;
-  description: string;
-  pubDate: Date;
-}
-
-export interface IUpdatePostBody {
-  title: string;
-  link: string;
-  description: string;
-}
-
 export interface IGameFilter {
   page?: string;
   perPage?: string;
@@ -46,7 +32,7 @@ export enum SortNamesEnum {
   gameType = 'gameType',
   status = 'status',
   winner = 'winner',
-  createdAt = 'createdAt'
+  createdAt = 'createdAt',
 }
 
 export enum SortEnum {

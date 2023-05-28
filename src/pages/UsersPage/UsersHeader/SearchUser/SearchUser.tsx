@@ -3,17 +3,17 @@ import { debounce } from 'lodash';
 import { InputAdornment } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useTranslation } from 'react-i18next';
-import { IGameFilter } from '../../../mobx/game/types';
-import CustomInput from '../../../components/Input/CustomInput/CustomInput';
+import CustomInput from '../../../../components/Input/CustomInput/CustomInput';
+import { IUserFilter } from '../../../../mobx/user/types';
 
 interface ISearchPostProps {
-  filters: IGameFilter;
-  getGames: (filters: IGameFilter) => void;
+  filters: IUserFilter;
+  getUsers: (filters: IUserFilter) => void;
   setSelected: (selected: string[]) => void;
 }
 
-const SearchGame: FC<ISearchPostProps> = ({
-  getGames,
+const SearchUser: FC<ISearchPostProps> = ({
+  getUsers,
   filters,
   setSelected,
 }) => {
@@ -25,7 +25,7 @@ const SearchGame: FC<ISearchPostProps> = ({
         ...filters,
         search: value || undefined,
       };
-      getGames(newFilters);
+      getUsers(newFilters);
     }, 500),
     [],
   );
@@ -52,4 +52,4 @@ const SearchGame: FC<ISearchPostProps> = ({
   );
 };
 
-export default SearchGame;
+export default SearchUser;

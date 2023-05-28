@@ -1,39 +1,37 @@
 import React, { FC, useEffect } from 'react';
 import { observer } from 'mobx-react';
 import TableComponent from '../../components/Table/TableComponent/TableComponent';
-import { ITableHeaderProps } from '../../types';
 import { useTranslation } from 'react-i18next';
-import GameStore from '../../mobx/game';
-import { IGameFilter } from '../../mobx/game/types';
-import { formatGames } from '../../utils';
-import HomeHeader from './HomeHeader/HomeHeader';
+import { ITableHeaderProps } from '../../types';
+import UserStore from '../../mobx/user';
+import UsersHeader from './UsersHeader/UsersHeader';
+import { IUserFilter } from '../../mobx/user/types';
 import withSidebar from '../../templates/withSidebar';
+import { formatUsers } from '../../utils';
 
-const HomePage: FC = (): React.JSX.Element => {
+const UsersPage: FC = () => {
   const {
     count,
-    games,
+    users,
     filters,
     selected,
-    getGames,
+    getUsers,
     removeList,
     setFilters,
     setSelected,
-  } = GameStore;
+  } = UserStore;
   const { t } = useTranslation();
   const headers: ITableHeaderProps = {
-    firstPlayer: { name: t('Games.FirstPlayer'), sort: true },
-    secondPlayer: { name: t('Games.SecondPlayer') },
-    gameType: { name: t('Games.GameType'), sort: true },
-    moves: { name: t('Games.Moves'), sort: true },
-    status: { name: t('Games.Status'), sort: true },
-    winner: { name: t('Games.Winner'), sort: true },
-    createdAt: { name: t('Games.CreatedAt'), sort: true, isDate: true },
+    name: { name: t('Users.Name'), sort: true },
+    role: { name: t('Users.Role'), sort: true },
+    id: { name: t('Users.Id'), sort: true },
+    gameType: { name: t('Users.GameType'), sort: true },
+    createdAt: { name: t('Users.CreatedAt'), sort: true },
   };
 
   useEffect(() => {
     let queryList = window.location.href.split('?');
-    const result: IGameFilter = {};
+    const result: IUserFilter = {};
 
     if (queryList.length > 1) {
       queryList = queryList[1].split('&');
@@ -45,27 +43,29 @@ const HomePage: FC = (): React.JSX.Element => {
       });
 
       setFilters(result);
-      getGames(result).then();
+      getUsers(result).then();
     } else {
-      getGames(filters).then();
+      getUsers(filters).then();
     }
   }, []);
+
+  console.log(users);
   return (
     <>
-      <HomeHeader
-        getGames={getGames}
+      <UsersHeader
+        getUsers={getUsers}
         filters={filters}
         removeList={removeList}
         selected={selected}
         setSelected={setSelected}
       />
       <TableComponent
-        rows={formatGames(games)}
+        rows={formatUsers(users)}
         count={count}
         header={headers}
         filters={filters}
         selected={selected}
-        fetchData={getGames}
+        fetchData={getUsers}
         removeList={removeList}
         setSelected={setSelected}
       />
@@ -73,4 +73,4 @@ const HomePage: FC = (): React.JSX.Element => {
   );
 };
 
-export default withSidebar(observer(HomePage));
+export default withSidebar(observer(UsersPage));

@@ -1,9 +1,5 @@
 import { makeAutoObservable } from 'mobx';
-import {
-  IGame, IGameFilter,
-  SortEnum,
-  SortNamesEnum,
-} from './types';
+import { IGame, IGameFilter, SortEnum, SortNamesEnum } from './types';
 import GameServices from '../../services/game.services';
 import { createQuery } from '../../utils';
 
@@ -30,6 +26,7 @@ class GameStore {
     try {
       this.loading = true;
       const { games, count } = await GameServices.getGames(filters);
+      console.log(games);
       this.games = games;
       this.count = count;
 
@@ -50,7 +47,7 @@ class GameStore {
   removeList = async (ids: string[]) => {
     this.loading = true;
 
-    await GameServices.removePostList(ids);
+    await GameServices.removeGamesList(ids);
     await this.getGames(this.filters);
     this.setSelected([]);
 
@@ -60,7 +57,6 @@ class GameStore {
   setSelected = (selected: string[]) => {
     this.selected = selected;
   };
-
 }
 
 export default new GameStore();

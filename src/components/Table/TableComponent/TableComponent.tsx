@@ -34,7 +34,6 @@ const TableComponent: FC<ITableComponentProps> = ({
   count,
   selected,
   setSelected,
-  actions,
 }) => {
   const { t } = useTranslation();
   rows = rows.map((item) => {
@@ -99,84 +98,82 @@ const TableComponent: FC<ITableComponentProps> = ({
   }, [filters.page]);
 
   return (
-    <Box className={styles.container}>
-      <Paper className={styles.container__paper}>
-        {rows.length > 0 && (
-          <TableContainer>
-            <Table
-              className={styles.container__table}
-              aria-labelledby="tableTitle"
-              size={'medium'}
-            >
-              <TableHeader
-                numSelected={selected.length}
-                rowCount={rows.length}
-                onSelectAllClick={handleSelectAllClick}
-                header={header}
-                filters={filters}
-                fetchData={fetchData}
-              />
-              <TableBody>
-                {rows.map((row, index) => {
-                  const isItemSelected = isSelected(row._id);
-                  const labelId = `enhanced-table-checkbox-${index}`;
-                  return (
-                    <TableRow
-                      hover
-                      onClick={(event) => handleClickRow(event, row._id)}
-                      role="checkbox"
-                      aria-checked={isItemSelected}
-                      tabIndex={-1}
-                      key={row._id}
-                      selected={isItemSelected}
-                      className={styles.row}
-                    >
-                      <TableBodyComponent
-                        isItemSelected={isItemSelected}
-                        labelId={labelId}
-                        header={header}
-                        row={row}
-                        selected={selected}
-                        setSelected={setSelected}
-                        index={index}
-                      />
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        )}
-        {rows.length === 0 && (
-          <Box className={styles.container__no_data}>
-            <Typography>No data found</Typography>
-          </Box>
-        )}
-        <Box
-          className={styles.container__pagination}
-          sx={{
-            pointerEvents: selected.length === 1 ? 'none' : 'auto',
-          }}
-        >
-          <CustomInput
-            className={styles.container__pagination__input}
-            value={pageInput}
-            label={t('Games.Page')}
-            changeHandler={(e) => setPageInput(e.target.value)}
-            handleSubmit={() => handleChangePage(Number(pageInput))}
-          />
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={count}
-            labelRowsPerPage={t('Games.RowsPerPage')}
-            rowsPerPage={Number(filters.perPage)}
-            page={Number(filters.page)}
-            onPageChange={(event, newPage) => handleChangePage(newPage)}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
+    <Box className={styles.container} sx={{ bgcolor: 'background.paper' }}>
+      {rows.length > 0 && (
+        <TableContainer className={styles.container__table}>
+          <Table
+            className={styles.container__table}
+            aria-labelledby="tableTitle"
+            size={'medium'}
+          >
+            <TableHeader
+              numSelected={selected.length}
+              rowCount={rows.length}
+              onSelectAllClick={handleSelectAllClick}
+              header={header}
+              filters={filters}
+              fetchData={fetchData}
+            />
+            <TableBody>
+              {rows.map((row, index) => {
+                const isItemSelected = isSelected(row.createdAt);
+                const labelId = `enhanced-table-checkbox-${index}`;
+                return (
+                  <TableRow
+                    hover
+                    onClick={(event) => handleClickRow(event, row.createdAt)}
+                    role="checkbox"
+                    aria-checked={isItemSelected}
+                    tabIndex={-1}
+                    key={row.createdAt}
+                    selected={isItemSelected}
+                    className={styles.row}
+                  >
+                    <TableBodyComponent
+                      isItemSelected={isItemSelected}
+                      labelId={labelId}
+                      header={header}
+                      row={row}
+                      selected={selected}
+                      setSelected={setSelected}
+                      index={index}
+                    />
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
+      {rows.length === 0 && (
+        <Box className={styles.container__no_data}>
+          <Typography>No data found</Typography>
         </Box>
-      </Paper>
+      )}
+      <Box
+        className={styles.container__pagination}
+        sx={{
+          pointerEvents: selected.length === 1 ? 'none' : 'auto',
+        }}
+      >
+        <CustomInput
+          className={styles.container__pagination__input}
+          value={pageInput}
+          label={t('Games.Page')}
+          changeHandler={(e) => setPageInput(e.target.value)}
+          handleSubmit={() => handleChangePage(Number(pageInput))}
+        />
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={count}
+          labelRowsPerPage={t('Games.RowsPerPage')}
+          rowsPerPage={Number(filters.perPage)}
+          page={Number(filters.page)}
+          onPageChange={(event, newPage) => handleChangePage(newPage)}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Box>
     </Box>
   );
 };

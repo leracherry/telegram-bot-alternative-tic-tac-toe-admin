@@ -1,14 +1,36 @@
 export interface IUser {
   name: string;
   role: UserRoleEnum;
-  email: string;
-  password: string;
-  created_at: Date;
-  updated_at: Date;
+  id: string;
+  gameType: string;
+  createdAt: Date;
+}
+
+export interface IUserFilter {
+  page?: string;
+  perPage?: string;
+  sort?: SortEnum;
+  sortBy?: SortNamesEnum;
+  search?: string;
+  dateFrom?: Date;
+  dateTo?: Date;
 }
 export enum UserRoleEnum {
   user = 'user',
   admin = 'admin',
+}
+
+export enum SortNamesEnum {
+  name = 'name',
+  role = 'role',
+  id = 'id',
+  gameType = 'gameType',
+  createdAt = 'createdAt',
+}
+
+export enum SortEnum {
+  ASC = 'ASC',
+  DESC = 'DESC',
 }
 
 export interface IChangePasswordBody {

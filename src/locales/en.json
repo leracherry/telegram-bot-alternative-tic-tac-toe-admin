@@ -61,7 +61,16 @@
     "EmailMustBeAValidEmail": "Email must be a valid email"
   },
   "Menu": {
+    "Users": "Users",
+    "Games": "Games",
     "Profile": "Profile",
     "Logout": "Logout"
+  },
+  "Users": {
+    "Name": "Name",
+    "Role":"Role",
+    "Id": "Telegram id",
+    "GameType":"Game type",
+    "CreatedAt": "Created at"
   }
 }

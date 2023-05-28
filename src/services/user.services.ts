@@ -1,10 +1,22 @@
 import axios from 'axios';
-import { IChangePasswordBody, IChangeProfile } from '../mobx/user/types';
+import { IChangePasswordBody, IUser, IUserFilter } from '../mobx/user/types';
 import TokenService from './token.service';
+import { createQuery } from '../utils';
 
 class UserServices {
   private baseUrl = `${process.env.REACT_APP_API_URL}/user`;
 
+  async getUsers(
+    filters: IUserFilter,
+  ): Promise<{ users: IUser[]; count: number }> {
+    return axios
+      .get(this.baseUrl + '/list' + createQuery(filters), {
+        headers: TokenService.getHeaders(),
+      })
+      .then((res) => {
+        return res.data;
+      });
+  }
   async getProfile() {
     return axios
       .get(this.baseUrl, {
@@ -25,9 +37,10 @@ class UserServices {
       });
   }
 
-  async changeProfile(body: IChangeProfile) {
+  async removeUsersList(ids: string[]) {
     return axios
-      .put(this.baseUrl + '/profile', body, {
+      .delete(this.baseUrl + '/list', {
+        params: { ids: ids.join(',') },
         headers: TokenService.getHeaders(),
       })
       .then((res) => {

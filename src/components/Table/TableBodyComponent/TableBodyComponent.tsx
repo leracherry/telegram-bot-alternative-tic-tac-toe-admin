@@ -24,9 +24,9 @@ const TableBodyComponent: FC<ITableBodyProps> = ({
 }) => {
   return (
     <>
-      <TableCell padding='checkbox'>
+      <TableCell padding="checkbox">
         <Checkbox
-          color='primary'
+          color="primary"
           checked={isItemSelected}
           inputProps={{
             'aria-labelledby': labelId,
@@ -42,8 +42,8 @@ const TableBodyComponent: FC<ITableBodyProps> = ({
           return (
             <TableCell
               className={styles.cell}
-              key={`${row._id}-${index}`}
-              align='right'
+              key={`${row.createdAt}-${index}`}
+              align="right"
             >
               {data}
             </TableCell>

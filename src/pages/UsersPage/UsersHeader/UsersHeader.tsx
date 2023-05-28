@@ -1,19 +1,20 @@
 import React, { FC } from 'react';
 import { Box } from '@mui/material';
 import TableToolbar from '../../../components/Table/TableToolbar/TableToolbar';
-import styles from './HomeHeader.module.scss';
+import styles from './UsersHeader.module.scss';
 import { IGameFilter } from '../../../mobx/game/types';
-import SearchGame from '../SearchGame/SearchGame';
+import SearchUser from './SearchUser/SearchUser';
+import { IUserFilter } from '../../../mobx/user/types';
 
 interface IPostHeaderProps {
-  getGames: (filters: IGameFilter) => void;
-  filters: IGameFilter;
+  getUsers: (filters: IUserFilter) => void;
+  filters: IUserFilter;
   removeList: (ids: string[]) => void;
   selected: string[];
   setSelected: (selected: string[]) => void;
 }
 const PostHeader: FC<IPostHeaderProps> = ({
-  getGames,
+  getUsers,
   filters,
   removeList,
   selected,
@@ -22,9 +23,9 @@ const PostHeader: FC<IPostHeaderProps> = ({
   return (
     <Box className={styles.container}>
       <Box className={styles.container__flex}>
-        <SearchGame
+        <SearchUser
           filters={filters}
-          getGames={getGames}
+          getUsers={getUsers}
           setSelected={setSelected}
         />
       </Box>

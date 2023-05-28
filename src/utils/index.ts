@@ -1,4 +1,5 @@
-import {IGame} from "../mobx/game/types";
+import { IGame } from '../mobx/game/types';
+import { IUser } from '../mobx/user/types';
 
 export const createQuery = (data: any) => {
   let result = '';
@@ -18,7 +19,7 @@ export const createQuery = (data: any) => {
 };
 
 export const formatGames = (games: IGame[]) => {
-  return games.map(game => ({
+  return games.map((game) => ({
     firstPlayer: game.firstPlayer,
     secondPlayer: game.secondPlayer,
     gameType: game.gameType,
@@ -26,5 +27,15 @@ export const formatGames = (games: IGame[]) => {
     status: game.status,
     winner: game.winner,
     createdAt: game.createdAt,
-  }))
-}
+  }));
+};
+
+export const formatUsers = (users: IUser[]) => {
+  return users.map((user) => ({
+    name: user.name,
+    role: user.role,
+    id: user.id,
+    gameType: user.gameType,
+    createdAt: user.createdAt,
+  }));
+};
