@@ -18,10 +18,13 @@ class GameServices {
       });
   }
 
-  async removeGamesList(ids: string[]) {
+  async removeGamesList(ids: string[], games: IGame[]) {
+    const data = games
+      .filter((game) => ids.includes(game.createdAt.toString()))
+      .map((item) => item._id);
     return axios
       .delete(this.baseUrl + '/list', {
-        params: { ids: ids.join(',') },
+        params: { ids: data.join(',') },
         headers: TokenService.getHeaders(),
       })
       .then((res) => {

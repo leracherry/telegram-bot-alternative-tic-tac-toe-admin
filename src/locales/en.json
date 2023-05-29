@@ -12,7 +12,7 @@
     "Moves":"Moves",
     "Status": "Status",
     "Winner":"Winner",
-    "LogoText": "Games",
+    "LogoText": "Tic Tac Toe Admin",
     "Search": "Search",
     "Title": "Title",
     "Link": "Link",
@@ -69,6 +69,7 @@
   "Users": {
     "Name": "Name",
     "Role":"Role",
+    "Status":"Status",
     "Id": "Telegram id",
     "GameType":"Game type",
     "CreatedAt": "Created at"

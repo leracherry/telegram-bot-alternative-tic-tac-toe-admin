@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 import TableToolbar from '../../../components/Table/TableToolbar/TableToolbar';
 import styles from './UsersHeader.module.scss';
 import { IGameFilter } from '../../../mobx/game/types';
-import SearchUser from './SearchUser/SearchUser';
+import SearchUser from '../SearchUser/SearchUser';
 import { IUserFilter } from '../../../mobx/user/types';
 
 interface IPostHeaderProps {

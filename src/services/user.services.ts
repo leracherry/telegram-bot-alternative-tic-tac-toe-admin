@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { IChangePasswordBody, IUser, IUserFilter } from '../mobx/user/types';
+import {
+  IChangePasswordBody,
+  IChangeStatusBody,
+  IUser,
+  IUserFilter,
+} from '../mobx/user/types';
 import TokenService from './token.service';
 import { createQuery } from '../utils';
 
@@ -37,10 +42,23 @@ class UserServices {
       });
   }
 
-  async removeUsersList(ids: string[]) {
+  async changeStatus(body: IChangeStatusBody) {
+    return axios
+      .put(this.baseUrl + '/change-status', body, {
+        headers: TokenService.getHeaders(),
+      })
+      .then((res) => {
+        return res.data;
+      });
+  }
+
+  async removeUsersList(ids: string[], users: IUser[]) {
+    const data = users
+      .filter((user) => ids.includes(user.createdAt.toString()))
+      .map((item) => item.id);
     return axios
       .delete(this.baseUrl + '/list', {
-        params: { ids: ids.join(',') },
+        params: { ids: data.join(',') },
         headers: TokenService.getHeaders(),
       })
       .then((res) => {

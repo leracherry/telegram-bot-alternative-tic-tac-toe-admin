@@ -19,13 +19,14 @@ const HomePage: FC = (): React.JSX.Element => {
     removeList,
     setFilters,
     setSelected,
+    loading,
   } = GameStore;
   const { t } = useTranslation();
   const headers: ITableHeaderProps = {
     firstPlayer: { name: t('Games.FirstPlayer'), sort: true },
     secondPlayer: { name: t('Games.SecondPlayer') },
     gameType: { name: t('Games.GameType'), sort: true },
-    moves: { name: t('Games.Moves'), sort: true },
+    moves: { name: t('Games.Moves'), sort: true, isAction: true, isJson: true },
     status: { name: t('Games.Status'), sort: true },
     winner: { name: t('Games.Winner'), sort: true },
     createdAt: { name: t('Games.CreatedAt'), sort: true, isDate: true },
@@ -60,6 +61,7 @@ const HomePage: FC = (): React.JSX.Element => {
         setSelected={setSelected}
       />
       <TableComponent
+        loading={loading}
         rows={formatGames(games)}
         count={count}
         header={headers}

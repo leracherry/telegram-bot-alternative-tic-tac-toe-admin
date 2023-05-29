@@ -17,19 +17,18 @@ import CustomValidationInput from '../../components/Input/CustomValidationInput/
 import styles from './SIgnInPage.module.scss';
 
 function SignInPage() {
-  const { signInUser, loading, loginErrors, clearErrors } = AuthStore;
+  const { signInUser, loginErrors, clearErrors } = AuthStore;
   const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
+    event: React.MouseEvent<HTMLButtonElement>,
   ) => {
     event.preventDefault();
   };
 
   return (
     <Box className={styles.container}>
-      {loading && <Spinner />}
       <Formik
         initialValues={{
           telegramId: '',
@@ -64,12 +63,12 @@ function SignInPage() {
                 width={400}
                 formControlProps={{ sx: { mb: 2 } }}
                 endAdornment={() => (
-                  <InputAdornment position='end'>
+                  <InputAdornment position="end">
                     <IconButton
-                      aria-label='toggle password visibility'
+                      aria-label="toggle password visibility"
                       onClick={handleClickShowPassword}
                       onMouseDown={handleMouseDownPassword}
-                      edge='end'
+                      edge="end"
                     >
                       {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>

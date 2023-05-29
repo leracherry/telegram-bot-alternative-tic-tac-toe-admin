@@ -1,12 +1,18 @@
 {
   "Login": {
-    "Title": "Увійти",
+    "Title": "Вхід",
     "Button": "Увійти",
-    "EmailLabel": "Електронна пошта",
+    "TelegramIdLabel": "Telegram ID",
     "PasswordLabel": "Пароль"
   },
-  "Posts": {
-    "LogoText": "Пости",
+  "Games": {
+    "FirstPlayer": "Перший гравець",
+    "SecondPlayer":"Другий гравець",
+    "GameType": "Тип гри",
+    "Moves":"Ходи",
+    "Status": "Статус",
+    "Winner":"Переможець",
+    "LogoText": "Tic Tac Toe Admin",
     "Search": "Пошук",
     "Title": "Назва",
     "Link": "Посилання",
@@ -15,13 +21,13 @@
     "CreatedAt": "Створено",
     "Selected": "вибрано",
     "EditButton": "Редагувати",
-    "NewPost": "Новий пост",
-    "CreateNewPost": "Створити новий пост",
+    "NewPost": "Новий запис",
+    "CreateNewPost": "Створити новий запис",
     "Create": "Створити",
-    "EditPost": "Редагувати пост",
+    "EditPost": "Редагувати запис",
     "Save": "Зберегти",
     "Cancel": "Скасувати",
-    "AreYouSureDelBtn": "Ви впевнені, що хочете видалити ці записи?",
+    "AreYouSureDelBtn": "Ви впевнені, що хочете видалити ці елементи?",
     "Delete": "Видалити",
     "Page": "Сторінка",
     "RowsPerPage": "Рядків на сторінці"
@@ -41,8 +47,8 @@
     "Change": "Змінити"
   },
   "Errors": {
-    "Required": "Обов'язково",
-    "InvalidEmail": "Неправильна електронна пошта",
+    "Required": "Обов'язкове поле",
+    "InvalidEmail": "Недійсна електронна пошта",
     "Min6": "Мінімум 6 символів",
     "Max30": "Максимум 30 символів",
     "UserNotFound": "Користувача не знайдено",
@@ -52,10 +58,21 @@
     "LinkAlreadyExist": "Посилання вже існує",
     "NotEnoughRights": "Недостатньо прав",
     "PasswordsMustMatch": "Паролі повинні співпадати",
-    "EmailMustBeAValidEmail": "Електронна адреса має бути дійсною"
+    "EmailMustBeAValidEmail": "Електронна пошта повинна бути дійсною"
   },
   "Menu": {
+    "Users": "Користувачі",
+    "Games": "Ігри",
     "Profile": "Профіль",
     "Logout": "Вийти"
+  },
+  "Users": {
+    "Name": "Ім'я",
+    "Role":"Роль",
+    "Status":"Статус",
+    "Id": "Telegram ID",
+    "GameType":"Тип гри",
+    "CreatedAt": "Створено"
   }
 }
+

@@ -46,19 +46,21 @@ const ChangePassword: FC<IChangePasswordProps> = ({
           Boolean(errors);
           return (
             <Box className={styles.formik_container}>
-              <Typography variant={'h4'}>Change password</Typography>
+              <Typography variant={'h4'}>
+                {t('Profile.ChangePassword')}
+              </Typography>
 
               <CustomValidationInput
                 clearErrors={clearErrors}
                 errors={changePasswordErrors}
                 type={showOldPassword ? 'text' : 'password'}
                 endAdornment={() => (
-                  <InputAdornment position='end'>
+                  <InputAdornment position="end">
                     <IconButton
-                      aria-label='toggle password visibility'
+                      aria-label="toggle password visibility"
                       onClick={() => setShowOldPassword(!showOldPassword)}
                       onMouseDown={(e) => e.preventDefault()}
-                      edge='end'
+                      edge="end"
                     >
                       {showOldPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
@@ -73,12 +75,12 @@ const ChangePassword: FC<IChangePasswordProps> = ({
                 errors={changePasswordErrors}
                 type={showNewPassword ? 'text' : 'password'}
                 endAdornment={() => (
-                  <InputAdornment position='end'>
+                  <InputAdornment position="end">
                     <IconButton
-                      aria-label='toggle password visibility'
+                      aria-label="toggle password visibility"
                       onClick={() => setShowNewPassword(!showNewPassword)}
                       onMouseDown={(e) => e.preventDefault()}
-                      edge='end'
+                      edge="end"
                     >
                       {showNewPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
@@ -93,14 +95,14 @@ const ChangePassword: FC<IChangePasswordProps> = ({
                 errors={changePasswordErrors}
                 type={showRepeatNewPassword ? 'text' : 'password'}
                 endAdornment={() => (
-                  <InputAdornment position='end'>
+                  <InputAdornment position="end">
                     <IconButton
-                      aria-label='toggle password visibility'
+                      aria-label="toggle password visibility"
                       onClick={() =>
                         setShowRepeatNewPassword(!showRepeatNewPassword)
                       }
                       onMouseDown={(e) => e.preventDefault()}
-                      edge='end'
+                      edge="end"
                     >
                       {showRepeatNewPassword ? (
                         <VisibilityOff />

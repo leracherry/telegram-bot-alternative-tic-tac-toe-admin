@@ -1,5 +1,8 @@
 import { IGame } from '../mobx/game/types';
 import { IUser } from '../mobx/user/types';
+import CircleIcon from '@mui/icons-material/Circle';
+import { IconButton, Typography } from '@mui/material';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 export const createQuery = (data: any) => {
   let result = '';
@@ -23,7 +26,7 @@ export const formatGames = (games: IGame[]) => {
     firstPlayer: game.firstPlayer,
     secondPlayer: game.secondPlayer,
     gameType: game.gameType,
-    moves: JSON.stringify(game.moves),
+    moves: game.moves,
     status: game.status,
     winner: game.winner,
     createdAt: game.createdAt,
@@ -34,6 +37,7 @@ export const formatUsers = (users: IUser[]) => {
   return users.map((user) => ({
     name: user.name,
     role: user.role,
+    status: user.status,
     id: user.id,
     gameType: user.gameType,
     createdAt: user.createdAt,

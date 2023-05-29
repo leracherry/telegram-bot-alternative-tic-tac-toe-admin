@@ -8,6 +8,7 @@ import UsersHeader from './UsersHeader/UsersHeader';
 import { IUserFilter } from '../../mobx/user/types';
 import withSidebar from '../../templates/withSidebar';
 import { formatUsers } from '../../utils';
+import withLoading from '../../templates/withLoading';
 
 const UsersPage: FC = () => {
   const {
@@ -19,11 +20,13 @@ const UsersPage: FC = () => {
     removeList,
     setFilters,
     setSelected,
+    usersLoading,
   } = UserStore;
   const { t } = useTranslation();
   const headers: ITableHeaderProps = {
     name: { name: t('Users.Name'), sort: true },
     role: { name: t('Users.Role'), sort: true },
+    status: { name: t('Users.Status'), sort: true, isStatus: true },
     id: { name: t('Users.Id'), sort: true },
     gameType: { name: t('Users.GameType'), sort: true },
     createdAt: { name: t('Users.CreatedAt'), sort: true },
@@ -49,7 +52,6 @@ const UsersPage: FC = () => {
     }
   }, []);
 
-  console.log(users);
   return (
     <>
       <UsersHeader
@@ -60,6 +62,7 @@ const UsersPage: FC = () => {
         setSelected={setSelected}
       />
       <TableComponent
+        loading={usersLoading}
         rows={formatUsers(users)}
         count={count}
         header={headers}
@@ -73,4 +76,4 @@ const UsersPage: FC = () => {
   );
 };
 
-export default withSidebar(observer(UsersPage));
+export default withLoading(withSidebar(observer(UsersPage)));

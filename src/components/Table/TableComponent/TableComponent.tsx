@@ -13,6 +13,7 @@ import { TableRow, Typography } from '@mui/material';
 import { ITableHeaderProps } from '../../../types';
 import styles from './TableComponent.module.scss';
 import { useTranslation } from 'react-i18next';
+import TableSkeleton from '../TableSkeleton/TableSkeleton';
 
 interface ITableComponentProps {
   rows: any[];
@@ -23,6 +24,7 @@ interface ITableComponentProps {
   removeList: (ids: string[]) => void;
   selected: string[];
   setSelected: (value: string[]) => void;
+  loading: boolean;
   actions?: (row: any) => void;
 }
 
@@ -34,6 +36,7 @@ const TableComponent: FC<ITableComponentProps> = ({
   count,
   selected,
   setSelected,
+  loading,
 }) => {
   const { t } = useTranslation();
   rows = rows.map((item) => {
@@ -70,7 +73,7 @@ const TableComponent: FC<ITableComponentProps> = ({
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
-      const newSelected = rows.map((n) => n._id);
+      const newSelected = rows.map((n) => n.createdAt);
       setSelected(newSelected);
       return;
     }
@@ -99,7 +102,8 @@ const TableComponent: FC<ITableComponentProps> = ({
 
   return (
     <Box className={styles.container} sx={{ bgcolor: 'background.paper' }}>
-      {rows.length > 0 && (
+      {loading && <TableSkeleton />}
+      {rows.length > 0 && !loading && (
         <TableContainer className={styles.container__table}>
           <Table
             className={styles.container__table}
@@ -145,35 +149,37 @@ const TableComponent: FC<ITableComponentProps> = ({
           </Table>
         </TableContainer>
       )}
-      {rows.length === 0 && (
+      {!loading && rows.length === 0 && (
         <Box className={styles.container__no_data}>
           <Typography>No data found</Typography>
         </Box>
       )}
-      <Box
-        className={styles.container__pagination}
-        sx={{
-          pointerEvents: selected.length === 1 ? 'none' : 'auto',
-        }}
-      >
-        <CustomInput
-          className={styles.container__pagination__input}
-          value={pageInput}
-          label={t('Games.Page')}
-          changeHandler={(e) => setPageInput(e.target.value)}
-          handleSubmit={() => handleChangePage(Number(pageInput))}
-        />
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={count}
-          labelRowsPerPage={t('Games.RowsPerPage')}
-          rowsPerPage={Number(filters.perPage)}
-          page={Number(filters.page)}
-          onPageChange={(event, newPage) => handleChangePage(newPage)}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </Box>
+      {!loading && (
+        <Box
+          className={styles.container__pagination}
+          sx={{
+            pointerEvents: selected.length === 1 ? 'none' : 'auto',
+          }}
+        >
+          <CustomInput
+            className={styles.container__pagination__input}
+            value={pageInput}
+            label={t('Games.Page')}
+            changeHandler={(e) => setPageInput(e.target.value)}
+            handleSubmit={() => handleChangePage(Number(pageInput))}
+          />
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={count}
+            labelRowsPerPage={t('Games.RowsPerPage')}
+            rowsPerPage={Number(filters.perPage)}
+            page={Number(filters.page)}
+            onPageChange={(event, newPage) => handleChangePage(newPage)}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </Box>
+      )}
     </Box>
   );
 };

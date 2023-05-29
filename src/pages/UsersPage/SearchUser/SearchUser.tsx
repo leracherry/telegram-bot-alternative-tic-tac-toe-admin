@@ -3,8 +3,8 @@ import { debounce } from 'lodash';
 import { InputAdornment } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useTranslation } from 'react-i18next';
-import CustomInput from '../../../../components/Input/CustomInput/CustomInput';
-import { IUserFilter } from '../../../../mobx/user/types';
+import CustomInput from '../../../components/Input/CustomInput/CustomInput';
+import { IUserFilter } from '../../../mobx/user/types';
 
 interface ISearchPostProps {
   filters: IUserFilter;

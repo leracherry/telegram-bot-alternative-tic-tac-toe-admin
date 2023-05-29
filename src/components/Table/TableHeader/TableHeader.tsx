@@ -9,9 +9,10 @@ import { visuallyHidden } from '@mui/utils';
 import { FC } from 'react';
 import { SortEnum } from '../../../mobx/game/types';
 import styles from './TableHeader.module.scss';
+import { ITableHeaderProps as HeaderProps } from '../../../types/posts';
 
 interface ITableHeaderProps {
-  header: { [key: string]: { name: string; sort?: boolean; isDate?: boolean } };
+  header: HeaderProps;
   filters: { [key: string]: any };
   numSelected: number;
   onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -49,9 +50,9 @@ const TableHeader: FC<ITableHeaderProps> = (props: ITableHeaderProps) => {
   return (
     <TableHead>
       <TableRow>
-        <TableCell padding='checkbox'>
+        <TableCell padding="checkbox">
           <Checkbox
-            color='primary'
+            color="primary"
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
@@ -77,7 +78,7 @@ const TableHeader: FC<ITableHeaderProps> = (props: ITableHeaderProps) => {
                 >
                   {header[field].name}
                   {sortBy === field ? (
-                    <Box component='span' sx={visuallyHidden}>
+                    <Box component="span" sx={visuallyHidden}>
                       {sort === 'desc'
                         ? 'sorted descending'
                         : 'sorted ascending'}

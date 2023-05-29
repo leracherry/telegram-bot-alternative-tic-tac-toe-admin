@@ -4,6 +4,7 @@ export interface IUser {
   id: string;
   gameType: string;
   createdAt: Date;
+  status: string;
 }
 
 export interface IUserFilter {
@@ -36,6 +37,11 @@ export enum SortEnum {
 export interface IChangePasswordBody {
   oldPassword: string;
   newPassword: string;
+}
+
+export interface IChangeStatusBody {
+  status: string;
+  telegramId: string;
 }
 
 export interface IChangeProfile {

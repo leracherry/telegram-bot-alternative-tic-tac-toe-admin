@@ -30,18 +30,18 @@ const RemoveSelected: FC<IRemoveSelectedProps> = ({ removeList, selected }) => {
       <Dialog
         open={open}
         onClose={handleClose}
-        aria-labelledby='alert-dialog-title'
-        aria-describedby='alert-dialog-description'
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id='alert-dialog-title'>
-          {t('Posts.AreYouSureDelBtn')}
+        <DialogTitle id="alert-dialog-title">
+          {t('Games.AreYouSureDelBtn')}
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id='alert-dialog-description'></DialogContentText>
+          <DialogContentText id="alert-dialog-description"></DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button variant={'outlined'} onClick={handleClose}>
-            {t('Posts.Cancel')}
+            {t('Games.Cancel')}
           </Button>
           <Button
             variant={'contained'}
@@ -50,7 +50,7 @@ const RemoveSelected: FC<IRemoveSelectedProps> = ({ removeList, selected }) => {
               handleClose();
             }}
           >
-            {t('Posts.Delete')}
+            {t('Games.Delete')}
           </Button>
         </DialogActions>
       </Dialog>

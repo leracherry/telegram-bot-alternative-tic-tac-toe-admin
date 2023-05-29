@@ -2,11 +2,11 @@ import { makeAutoObservable } from 'mobx';
 import { IGame, IGameFilter, SortEnum, SortNamesEnum } from './types';
 import GameServices from '../../services/game.services';
 import { createQuery } from '../../utils';
+import { toast } from 'react-toastify';
 
 class GameStore {
   games: IGame[] = [];
   loading = false;
-  gameLoading = false;
   filters: IGameFilter = {
     page: '0',
     perPage: '10',
@@ -26,14 +26,15 @@ class GameStore {
     try {
       this.loading = true;
       const { games, count } = await GameServices.getGames(filters);
-      console.log(games);
       this.games = games;
       this.count = count;
 
       this.setFilters(filters);
       this.loading = false;
-    } catch (e) {
+    } catch (e: any) {
       this.games = [];
+      this.loading = false;
+      toast.error(e.response.data.error, { autoClose: 2000 });
     }
   };
 
@@ -45,13 +46,19 @@ class GameStore {
   };
 
   removeList = async (ids: string[]) => {
-    this.loading = true;
+    try {
+      this.loading = true;
 
-    await GameServices.removeGamesList(ids);
-    await this.getGames(this.filters);
-    this.setSelected([]);
+      await GameServices.removeGamesList(ids, this.games);
+      await this.getGames(this.filters);
+      this.setSelected([]);
 
-    this.loading = false;
+      this.loading = false;
+      toast.success('Games removed success', { autoClose: 2000 });
+    } catch (e: any) {
+      toast.error(e.response.data.error, { autoClose: 2000 });
+      this.loading = false;
+    }
   };
 
   setSelected = (selected: string[]) => {

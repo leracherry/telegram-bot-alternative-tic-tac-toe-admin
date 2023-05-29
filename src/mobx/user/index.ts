@@ -1,6 +1,7 @@
 import { makeAutoObservable } from 'mobx';
 import {
   IChangePasswordBody,
+  IChangeStatusBody,
   IUser,
   IUserFilter,
   SortEnum,
@@ -10,6 +11,7 @@ import UserServices from '../../services/user.services';
 import AuthStore from '../auth';
 import { IRequestError } from '../../types';
 import { createQuery } from '../../utils';
+import { toast } from 'react-toastify';
 
 class UserStore {
   user?: IUser;
@@ -41,7 +43,9 @@ class UserStore {
 
       this.setFilters(filters);
       this.usersLoading = false;
-    } catch (e) {
+    } catch (e: any) {
+      toast.error(e.response.data.error, { autoClose: 2000 });
+      this.loading = false;
       this.users = [];
     }
   };
@@ -52,6 +56,7 @@ class UserStore {
       this.user = await UserServices.getProfile();
       this.loading = false;
     } catch (e: any) {
+      toast.error(e.response.data.error, { autoClose: 2000 });
       this.loading = false;
       AuthStore.logoutUser();
     }
@@ -62,12 +67,10 @@ class UserStore {
       this.loading = true;
       await UserServices.changePassword(body);
       this.loading = false;
+      toast.success('Password changed', { autoClose: 2000 });
     } catch (e: any) {
+      toast.error(e.response.data.error, { autoClose: 2000 });
       this.loading = false;
-      if (e.response.data.user) {
-        AuthStore.logoutUser();
-        document.location.reload();
-      }
       this.changePasswordErrors = e.response.data;
     }
   };
@@ -84,13 +87,37 @@ class UserStore {
   };
 
   removeList = async (ids: string[]) => {
-    this.loading = true;
+    try {
+      this.loading = true;
 
-    await UserServices.removeUsersList(ids);
-    await this.getUsers(this.filters);
-    this.setSelected([]);
+      await UserServices.removeUsersList(ids, this.users);
+      await this.getUsers(this.filters);
+      this.setSelected([]);
 
-    this.loading = false;
+      this.loading = false;
+      toast.success('Users removed success', { autoClose: 2000 });
+    } catch (e: any) {
+      toast.error(e.response.data.error, { autoClose: 2000 });
+      this.loading = false;
+    }
+  };
+
+  changeStatus = async (body: IChangeStatusBody) => {
+    try {
+      this.loading = true;
+
+      await UserServices.changeStatus(body);
+      await this.getUsers(this.filters);
+      this.setSelected([]);
+
+      this.loading = false;
+      toast.success(`User ${body.telegramId} status was changed`, {
+        autoClose: 2000,
+      });
+    } catch (e: any) {
+      toast.error(e.response.data.error, { autoClose: 2000 });
+      this.loading = false;
+    }
   };
 
   setSelected = (selected: string[]) => {

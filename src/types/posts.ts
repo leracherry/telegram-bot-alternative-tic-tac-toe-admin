@@ -3,5 +3,12 @@ export interface IRequestError {
 }
 
 export interface ITableHeaderProps {
-  [key: string]: { name: string; sort?: boolean; isDate?: boolean };
+  [key: string]: {
+    name: string;
+    sort?: boolean;
+    isDate?: boolean;
+    isAction?: boolean;
+    isJson?: boolean;
+    isStatus?: boolean;
+  };
 }
