@@ -57,10 +57,8 @@ const StatusDialog: FC<IStatusDialogProps> = ({
                 alignItems: 'center',
               }}
             >
-              <CircleIcon color={status === 'active' ? 'success' : 'error'} />
-              <Typography sx={{ color: status === 'active' ? 'green' : 'red' }}>
-                {status}
-              </Typography>
+              <CircleIcon color={status === 'block' ? 'error' : 'success'} />
+              <Typography>{status}</Typography>
             </Box>
           </Box>
         </DialogContent>
@@ -70,13 +68,13 @@ const StatusDialog: FC<IStatusDialogProps> = ({
             color={status === 'active' ? 'error' : 'success'}
             onClick={async () => {
               await UserStore.changeStatus({
-                status: status === 'active' ? 'block' : 'active',
+                status: status === 'block' ? 'active' : 'block',
                 telegramId,
               });
               setOpen(false);
             }}
           >
-            {status === 'active' ? 'block' : 'activate'}
+            {status === 'block' ? 'activate' : 'block'}
           </Button>
           <Button variant={'outlined'} onClick={() => setOpen(false)}>
             Close

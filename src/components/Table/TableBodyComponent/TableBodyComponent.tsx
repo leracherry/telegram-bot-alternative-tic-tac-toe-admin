@@ -57,8 +57,8 @@ const TableBodyComponent: FC<ITableBodyProps> = ({
                   alignItems: 'center',
                 }}
               >
-                <CircleIcon color={data === 'active' ? 'success' : 'error'} />
-                <Typography sx={{ color: data === 'active' ? 'green' : 'red' }}>
+                <CircleIcon color={data === 'block' ? 'error' : 'success'} />
+                <Typography sx={{ color: data === 'block' ? 'red' : 'green' }}>
                   {data}
                 </Typography>
                 {row.role !== 'admin' && (

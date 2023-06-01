@@ -1,8 +1,5 @@
 import { IGame } from '../mobx/game/types';
 import { IUser } from '../mobx/user/types';
-import CircleIcon from '@mui/icons-material/Circle';
-import { IconButton, Typography } from '@mui/material';
-import VisibilityIcon from '@mui/icons-material/Visibility';
 
 export const createQuery = (data: any) => {
   let result = '';
