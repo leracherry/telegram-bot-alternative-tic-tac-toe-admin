@@ -1,0 +1,28 @@
+.container {
+  width: 100%;
+
+  &__table {
+    min-width: 750px;
+    overflow-x: auto;
+    height: 60vh;
+  }
+  &__pagination {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+    &__input {
+      max-width: 80px;
+    }
+  }
+  &__no_data {
+    padding: 20px 40px;
+    margin-left: 20px;
+  }
+}
+
+.row {
+  max-height: 73px!important;
+  height: 73px!important;
+  min-height: 73px!important;
+}

@@ -1,0 +1,78 @@
+{
+  "Login": {
+    "Title": "Вхід",
+    "Button": "Увійти",
+    "TelegramIdLabel": "Telegram ID",
+    "PasswordLabel": "Пароль"
+  },
+  "Games": {
+    "FirstPlayer": "Перший гравець",
+    "SecondPlayer":"Другий гравець",
+    "GameType": "Тип гри",
+    "Moves":"Ходи",
+    "Status": "Статус",
+    "Winner":"Переможець",
+    "LogoText": "Tic Tac Toe Admin",
+    "Search": "Пошук",
+    "Title": "Назва",
+    "Link": "Посилання",
+    "Description": "Опис",
+    "PubDate": "Дата публікації",
+    "CreatedAt": "Створено",
+    "Selected": "вибрано",
+    "EditButton": "Редагувати",
+    "NewPost": "Новий запис",
+    "CreateNewPost": "Створити новий запис",
+    "Create": "Створити",
+    "EditPost": "Редагувати запис",
+    "Save": "Зберегти",
+    "Cancel": "Скасувати",
+    "AreYouSureDelBtn": "Ви впевнені, що хочете видалити ці елементи?",
+    "Delete": "Видалити",
+    "Page": "Сторінка",
+    "RowsPerPage": "Рядків на сторінці"
+  },
+  "Profile": {
+    "Title": "Профіль",
+    "NameLabel": "Ім'я",
+    "EmailLabel": "Електронна пошта",
+    "Name": "ім'я",
+    "Email": "електронна пошта",
+    "CreatedAt": "створено",
+    "Save": "Зберегти",
+    "ChangePassword": "Змінити пароль",
+    "OldPassword": "Старий пароль",
+    "NewPassword": "Новий пароль",
+    "RepeatNewPassword": "Повторіть новий пароль",
+    "Change": "Змінити"
+  },
+  "Errors": {
+    "Required": "Обов'язкове поле",
+    "InvalidEmail": "Недійсна електронна пошта",
+    "Min6": "Мінімум 6 символів",
+    "Max30": "Максимум 30 символів",
+    "UserNotFound": "Користувача не знайдено",
+    "IncorrectPassword": "Неправильний пароль",
+    "IncorrectOldPassword": "Неправильний старий пароль",
+    "UserAlreadyExist": "Користувач вже існує",
+    "LinkAlreadyExist": "Посилання вже існує",
+    "NotEnoughRights": "Недостатньо прав",
+    "PasswordsMustMatch": "Паролі повинні співпадати",
+    "EmailMustBeAValidEmail": "Електронна пошта повинна бути дійсною"
+  },
+  "Menu": {
+    "Users": "Користувачі",
+    "Games": "Ігри",
+    "Profile": "Профіль",
+    "Logout": "Вийти"
+  },
+  "Users": {
+    "Name": "Ім'я",
+    "Role":"Роль",
+    "Status":"Статус",
+    "Id": "Telegram ID",
+    "GameType":"Тип гри",
+    "CreatedAt": "Створено"
+  }
+}
+
