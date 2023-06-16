@@ -2,8 +2,19 @@
   "Login": {
     "Title": "Вхід",
     "Button": "Увійти",
-    "TelegramIdLabel": "Telegram ID",
-    "PasswordLabel": "Пароль"
+    "TelegramIdLabel": "Telegram ID або Пошта",
+    "PasswordLabel": "Пароль",
+    "ForgotPassword": "Забули пароль?",
+    "PasswordRecovering": "Відновлення пароля",
+    "Email": "Пошта",
+    "SendMail": "Відправити лист",
+    "Code": "Код",
+    "ConfirmCode": "Введіть код",
+    "Confirm": "Підтвердити",
+    "RepeatPasswordLabel": "Повтор пароля",
+    "SubmitPassword": "Підтвердження паролю",
+    "SavePassword": "Зберегти"
+
   },
   "Games": {
     "FirstPlayer": "Перший гравець",
@@ -49,8 +60,9 @@
   "Errors": {
     "Required": "Обов'язкове поле",
     "InvalidEmail": "Недійсна електронна пошта",
-    "Min6": "Мінімум 6 символів",
+    "Min8": "Мінімум 8 символів",
     "Max30": "Максимум 30 символів",
+    "StrongPassword": "Пароль повинен містити хоча б одну заголовну літеру, одну малу літеру, одну цифру та один спеціальний символ",
     "UserNotFound": "Користувача не знайдено",
     "IncorrectPassword": "Неправильний пароль",
     "IncorrectOldPassword": "Неправильний старий пароль",
