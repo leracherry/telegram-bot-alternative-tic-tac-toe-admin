@@ -97,10 +97,11 @@ const CustomValidationInput: FC<ICustomOutlinedInputProps> = ({
                       `Errors.${
                         value.form.errors[fieldName] ??
                         (errors && errors[fieldName])
-                      }`
+                      }`,
                     )}
                   </Typography>
                 ))}
+
             {errors && errors[fieldName] && (
               <Typography color={'error'}>
                 {t(`Errors.${errors[fieldName]}`)}
