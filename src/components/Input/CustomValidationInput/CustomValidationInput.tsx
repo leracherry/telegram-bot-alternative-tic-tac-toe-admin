@@ -89,24 +89,25 @@ const CustomValidationInput: FC<ICustomOutlinedInputProps> = ({
               }
               endAdornment={endAdornment && endAdornment(value)}
             />
-            {hasErrors ||
-              (value.form.touched[fieldName] &&
-                Boolean(value.form.errors[fieldName]) && (
-                  <Typography color={'error'}>
-                    {t(
-                      `Errors.${
-                        value.form.errors[fieldName] ??
-                        (errors && errors[fieldName])
-                      }`,
-                    )}
-                  </Typography>
-                ))}
-
-            {errors && errors[fieldName] && (
-              <Typography color={'error'}>
-                {t(`Errors.${errors[fieldName]}`)}
-              </Typography>
-            )}
+            <Box sx={{ maxWidth: 340 }}>
+              {hasErrors ||
+                (value.form.touched[fieldName] &&
+                  Boolean(value.form.errors[fieldName]) && (
+                    <Typography color={'error'}>
+                      {t(
+                        `Errors.${
+                          value.form.errors[fieldName] ??
+                          (errors && errors[fieldName])
+                        }`,
+                      )}
+                    </Typography>
+                  ))}
+              {errors && errors[fieldName] && (
+                <Typography color={'error'}>
+                  {t(`Errors.${errors[fieldName]}`)}
+                </Typography>
+              )}
+            </Box>
           </Box>
         )}
       </Field>

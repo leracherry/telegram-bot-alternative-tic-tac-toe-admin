@@ -8,12 +8,21 @@ class TokenService {
     return localStorage.getItem('accessToken');
   }
 
+  getPasswordToken() {
+    return localStorage.getItem('passwordToken');
+  }
+
   setToken(accessToken: string) {
     localStorage.setItem('accessToken', accessToken);
   }
 
+  setPasswordToken(accessToken: string) {
+    localStorage.setItem('passwordToken', accessToken);
+  }
+
   removeToken() {
     localStorage.removeItem('accessToken');
+    localStorage.removeItem('passwordToken');
   }
 }
 

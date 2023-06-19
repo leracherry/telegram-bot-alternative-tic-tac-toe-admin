@@ -2,8 +2,18 @@
   "Login": {
     "Title": "Login",
     "Button": "Login",
-    "TelegramIdLabel": "Telegram Id",
-    "PasswordLabel": "Password"
+    "TelegramIdLabel": "Telegram Id or Email",
+    "PasswordLabel": "Password",
+    "ForgotPassword": "Forgot password?",
+    "PasswordRecovering": "Password recovering",
+    "Email": "Email",
+    "SendMail": "Send mail",
+    "Code": "Code",
+    "ConfirmCode": "Confirm code",
+    "Confirm": "Confirm",
+    "RepeatPasswordLabel": "Repeat password",
+    "SubmitPassword": "Submit password",
+    "SavePassword": "Save"
   },
   "Games": {
     "FirstPlayer": "First player",
@@ -49,8 +59,9 @@
   "Errors": {
     "Required": "Required",
     "InvalidEmail": "Invalid email",
-    "Min6": "Minimum 6 characters required",
+    "Min8": "Minimum 8 characters required",
     "Max30": "Maximum 30 characters required",
+    "StrongPassword": "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character",
     "UserNotFound": "User not found",
     "IncorrectPassword": "Incorrect password",
     "IncorrectOldPassword": "Incorrect old password",
